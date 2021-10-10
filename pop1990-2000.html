@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./libs/d3.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <title>MA Map</title>
+    <title>MA Population change from 1990 and 2000</title>
     <style>
         #tooltip {
             position: absolute;
@@ -37,6 +37,7 @@
 </head>
 
 <body>
+    <h2>Population change between 1990 and 2000</h2>
     <div id="tooltip"></div>
     <script>
         /*-------------------------------------------------------*/
@@ -91,10 +92,10 @@
                 d3.geoEquirectangular(), //Cylindrical Projections
                 d3.geoOrthographic()
             ]
-
-            /*-------------------------------------------------------*/
-            /*----------------geoPath generator----------------------*/
-            /*-------------------------------------------------------*/
+            console.log(geojson)
+                /*-------------------------------------------------------*/
+                /*----------------geoPath generator----------------------*/
+                /*-------------------------------------------------------*/
 
             const geoPath_generator = d3.geoPath()
                 .projection(projections[3].fitSize([window_dims.width - margin, window_dims.height - margin], geojson))
@@ -107,13 +108,13 @@
                 // if the data is scaled using log scale
             let logScale = d3.scaleLog()
                 .domain(d3.extent(geojson.features, (d) => {
-                    return d['properties']['POP2010']
+                    return d['properties']['POPCH90_00']
                 }))
 
             // if the data is scaled using linear scale
             let linearScale = d3.scaleLinear()
                 .domain(d3.extent(geojson.features, (d) => {
-                    return d['properties']['POP2010']
+                    return d['properties']['POPCH90_00']
                 }))
 
             /*-------------------------------------------------------*/
@@ -135,13 +136,13 @@
                 .enter()
                 .append("path")
                 .attr("d", d => geoPath_generator(d))
-                //.attr("fill", d => colorInterpolator(logScale(d['properties']['POP2010'])))
-                .attr("fill", d => colorInterpolator(linearScale(d['properties']['POP2010'])))
-                .on("mouseenter", (m, d) => {
+                //.attr("fill", d => colorInterpolator(logScale(d['properties']['POP1980'])))
+                .attr("fill", d => colorInterpolator(linearScale(d['properties']['POPCH90_00'])))
+                .on("mouseover", (m, d) => {
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9)
-                    tooltip.html(d['properties']['TOWN'])
+                    tooltip.html(d['properties']['POPCH90_00'])
                         .style("left", m.clientX + "px")
                         .style("top", m.clientY + "px");
                 })
