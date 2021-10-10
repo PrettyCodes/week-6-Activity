@@ -17,4 +17,4 @@
             2.2.3 (https://prettycodes.github.io/week-6-Activity/pop2000-2010.html)
     2.3 Color by County (https://prettycodes.github.io/week-6-Activity/county.html)
   3. Make a GitHub based web page from the visualization
-  https://umassdgithub.github.io/week-6-Activity/
+  https://prettycodes.github.io/week-6-Activity/
