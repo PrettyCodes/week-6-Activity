@@ -142,7 +142,7 @@
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9)
-                    tooltip.html(d['properties']['POPCH80_90'])
+                    tooltip.html(d['properties']['TOWN'] + "<br>" + d['properties']['POPCH80_90'])
                         .style("left", m.clientX + "px")
                         .style("top", m.clientY + "px");
                 })

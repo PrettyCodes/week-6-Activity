@@ -143,10 +143,7 @@
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9)
-                    tooltip.html(d['properties']['TOWN'] +
-                            "<table><tbody><tr><td> FIPS ID:" +
-                            d['properties']['FIPS_STCO'] +
-                            "</td></tr></tbody></table>")
+                    tooltip.html(d['properties']['TOWN'] + "<br>" + d['properties']['FIPS_STCO'])
                         .style("left", m.clientX + "px")
                         .style("top", m.clientY + "px");
                 })
